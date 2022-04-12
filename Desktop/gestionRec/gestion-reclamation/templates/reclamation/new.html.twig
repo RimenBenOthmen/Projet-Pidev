@@ -1,0 +1,13 @@
+
+
+
+
+{% block body %}
+
+  <br> <h1 style="display:flex; align-items:center;justify-content:center">Create new Reclamation</h1>
+<div style="display:flex; align-items:center;justify-content:center">
+    {{ include('reclamation/_form.html.twig') }}
+
+    <a href="{{ path('app_reclamation_index') }}">back to list</a>
+{% endblock %}
+</div>

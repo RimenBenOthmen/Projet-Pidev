@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Citoyen index{% endblock %}
+
+{% block body %}
+    <h1>Citoyen index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Idcitoy</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Villecitoyen</th>
+                <th>Cin</th>
+                <th>Numero</th>
+                <th>Motpass</th>
+                <th>Photo</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for citoyen in citoyens %}
+            <tr>
+                <td>{{ citoyen.idcitoy }}</td>
+                <td>{{ citoyen.nom }}</td>
+                <td>{{ citoyen.prenom }}</td>
+                <td>{{ citoyen.villecitoyen }}</td>
+                <td>{{ citoyen.cin }}</td>
+                <td>{{ citoyen.numero }}</td>
+                <td>{{ citoyen.motpass }}</td>
+                <td>{{ citoyen.photo }}</td>
+                <td>
+                    <a href="{{ path('app_citoyen_show', {'idcitoy': citoyen.idcitoy}) }}">show</a>
+                    <a href="{{ path('app_citoyen_edit', {'idcitoy': citoyen.idcitoy}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_citoyen_new') }}">Create new</a>
+{% endblock %}
