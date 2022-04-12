@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Type index{% endblock %}
+
+{% block body %}
+    <h1>Type index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Idtype</th>
+                <th>Etat</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for type in types %}
+            <tr>
+                <td>{{ type.idtype }}</td>
+                <td>{{ type.etat }}</td>
+                <td>
+                    <a href="{{ path('app_type_show', {'idtype': type.idtype}) }}">show</a>
+                    <a href="{{ path('app_type_edit', {'idtype': type.idtype}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_type_new') }}">Create new</a>
+{% endblock %}

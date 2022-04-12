@@ -1,0 +1,43 @@
+
+
+{% block title %}{% endblock %}
+
+{% block body %}
+
+    <h1>Reclamation </h1>
+
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Idreclam</th>
+                <th>Numerorec</th>
+                <th>Typereclamation</th>
+                <th>Descriptionrec</th>
+                <th>Villerec</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reclamation in reclamations %}
+            <tr>
+                <td>{{ reclamation.idreclam }}</td>
+                <td>{{ reclamation.numerorec }}</td>
+                <td>{{ reclamation.typereclamation }}</td>
+                <td>{{ reclamation.descriptionrec }}</td>
+                <td>{{ reclamation.villerec }}</td>
+                <td>
+                    <a href="{{ path('app_reclamation_show', {'idreclam': reclamation.idreclam}) }}">voir reclamation</a>
+                    <a href="{{ path('app_reclamation_edit', {'idreclam': reclamation.idreclam}) }}">modefier </a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_reclamation_new') }}" >Ajouter  reclamation</a>
+{% endblock %}
+
